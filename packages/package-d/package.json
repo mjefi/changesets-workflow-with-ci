@@ -1,0 +1,29 @@
+{
+  "name": "@mjefi/package-d",
+  "version": "0.0.1",
+  "description": "packageD",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": "dist/**/*",
+  "author": {
+    "name": "Marcin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjefi/changesets-workflow-with-ci.git",
+    "directory": "packages/package-a"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build": "babel src/index.js --out-dir dist",
+    "test": "jest"
+  },
+  "keywords": [
+    "packageD"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
