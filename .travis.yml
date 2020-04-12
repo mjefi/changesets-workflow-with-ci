@@ -1,30 +1,26 @@
 language: node_js
 node_js:
     - '10'
+    - 'node'
 cache:
     directories:
         - node_modules
-jobs:
-    include:
-        - stage: Test
-          before_script: npm install --ignore-scripts
-          script: npm t
-        - stage: Build Packages
-          before_script: npm run build
-          script: git status
-        - stage: Version Packages
-          before_script: changeset status
-          script: npx changeset version
-        - stage: Release
-          before_deploy:
-              - echo "@my-org:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
-              - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > "$HOME/.npmrc"
-          deploy:
-              provider: script
-              script: npm run publish
-              skip_cleanup: true
-              on:
-                  tags: true
-                  branch: master
-              # edge:
-              #     branch: master
+
+install:
+    script: npm install --ignore-scripts
+
+script:
+    npm t
+    npm run build
+    npx changeset version
+
+before_deploy:
+    - echo "@mjefi:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
+    - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > "$HOME/.npmrc"
+deploy:
+    provider: script
+    script: npm run publish
+    skip_cleanup: true
+    on:
+        # tags: true
+        branch: master
