@@ -21,8 +21,9 @@ before_deploy:
 deploy:
     provider: script
     script: npm run publish
-    after_success: git push && git push --tags
     skip_cleanup: true
     on:
         # tags: true
         branch: master
+
+after_deploy: git push && git push --tags
