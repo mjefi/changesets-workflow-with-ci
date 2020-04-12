@@ -12,9 +12,9 @@ install:
     npm install --ignore-scripts
 
 script:
-    npm t
-    npm run build
-    npx changeset version
+    - npm t
+    - npm run build
+    - npx changeset version
 
 before_deploy:
     - echo "@mjefi:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
