@@ -6,7 +6,7 @@ cache:
         - node_modules
 jobs:
     include:
-          before_script: npm i
+          before_script: npm install --ignore-scripts
         - stage: Test
           script: npm t
         - stage: Build Packages
@@ -16,7 +16,9 @@ jobs:
           before_script: changeset status
           script: npx changeset version
         - stage: Release
-          before_deploy: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > "$HOME/.npmrc"
+          before_deploy:
+            - echo "@my-org:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
+            - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > "$HOME/.npmrc"
           deploy:
               provider: script
               script: npm run publish
@@ -24,3 +26,5 @@ jobs:
               on:
                   tags: true
                   branch: master
+              # edge:
+              #     branch: master
