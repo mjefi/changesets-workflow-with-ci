@@ -14,6 +14,7 @@ script:
     - npm t
     - npm run build
     - npx changeset version
+
 after_success: git push && git push --tags
 
 before_deploy:
