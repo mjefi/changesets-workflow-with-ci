@@ -7,7 +7,8 @@ cache:
     directories:
         - node_modules
 
-install: npm install --ignore-scripts
+install:
+    npm install --ignore-scripts
 
 script:
     - npm t
@@ -16,7 +17,7 @@ script:
 
 before_deploy:
     - echo "@mjefi:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
-    - echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > "$HOME/.npmrc"
+    - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > "$HOME/.npmrc"
 deploy:
     provider: script
     script: npm run publish
