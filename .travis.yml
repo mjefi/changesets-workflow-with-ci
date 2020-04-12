@@ -15,7 +15,7 @@ script:
     - npx changeset version
 
 before_deploy:
-    - echo "@mjefi:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
+    - echo "@mjefi:registry=https://npm.pkg.github.com" > "$HOME/.npmrc"
     - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > "$HOME/.npmrc"
 deploy:
     provider: script
