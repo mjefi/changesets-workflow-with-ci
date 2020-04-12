@@ -1,3 +1,5 @@
+os: linux
+dist: trusty
 language: node_js
 node_js:
     - '10'
@@ -7,7 +9,7 @@ cache:
         - node_modules
 
 install:
-    script: npm install --ignore-scripts
+    npm install --ignore-scripts
 
 script:
     npm t
