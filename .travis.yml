@@ -14,8 +14,7 @@ script:
     - npm t
     - npm run build
     - npx changeset version
-
-after_script: git push && git push --tags
+    - git push && git push --tags
 
 before_deploy:
     - echo "@mjefi:registry=https://npm.pkg.github.com/" > "$HOME/.npmrc"
