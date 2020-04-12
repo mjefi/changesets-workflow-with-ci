@@ -29,4 +29,4 @@ deploy:
 after_success:
     - git config --global user.email "mjeightyfive@gmail.com"
     - git config --global user.name "mjeightyfive"
-    - git push && git push --tags
+    - git push origin HEAD:master && git push origin HEAD:master --tags
