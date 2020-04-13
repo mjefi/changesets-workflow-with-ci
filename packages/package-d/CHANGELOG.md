@@ -1,5 +1,11 @@
 # @mjefi/package-d
 
+## 0.0.5
+
+### Patch Changes
+
+- 6aa365b: add docs
+
 ## 0.0.4
 
 ### Patch Changes
