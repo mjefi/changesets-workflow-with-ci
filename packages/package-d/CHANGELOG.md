@@ -1,5 +1,11 @@
 # @mjefi/package-d
 
+## 0.0.6
+
+### Patch Changes
+
+- f78cebc: update docs
+
 ## 0.0.5
 
 ### Patch Changes
